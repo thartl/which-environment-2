@@ -1,0 +1,16 @@
+.settings_page_pw-site-options .notice,
+.settings_page_pw-site-options div.error,
+.settings_page_pw-site-options div.updated {
+	margin: 52px 15px 40px;
+}
+.settings_page_pw-site-options .pw-site-options-h1 {
+	margin: 30px 0 50px;
+}
+.settings_page_pw-site-options table.form-table {
+	margin-bottom: 40px;
+}
+.settings_page_pw-site-options .form-table th,
+.settings_page_pw-site-options .form-table td {
+	margin-bottom: 10px;
+	padding: 12px 10px;
+}

@@ -1,0 +1,19 @@
+#wpadminbar {
+	background-color: #c26a00 !important;
+}
+
+#wpadminbar ul li.dev-or-live {
+	margin-right: 8px;
+}
+
+@media all and (max-width: 1230px) {
+	#wpadminbar ul li.dev-or-live {
+		margin-right: 50px;
+	}
+}
+
+@media all and (max-width: 1200px) {
+	#wpadminbar ul li.dev-or-live {
+		margin-right: 0px;
+	}
+}
