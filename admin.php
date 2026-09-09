@@ -107,7 +107,7 @@ function pw_site_options_init() {
 
             add_settings_field(
                 'force_robots_off',
-                'Disallow robots\' indexing',
+                'Prevent all search-engine indexing',
                 'pw_force_disallow_robots_field_render',
                 'pwSiteOptions',
                 'disable-features'
@@ -115,7 +115,7 @@ function pw_site_options_init() {
 
             add_settings_field(
                 'prevent_google_bing_indexing',
-                'Prevent Google and Bing indexing',
+                'Prevent Google and Bing indexing only',
                 'pw_prevent_google_bing_indexing_field_render',
                 'pwSiteOptions',
                 'disable-features'
@@ -362,12 +362,17 @@ function pw_admin_site_options_page() {
 
 // 1) Check passphrase
 // 2) Replace domain string with a locked version
+// 3) Give Google/Bing-only indexing prevention precedence
 add_filter( 'pre_update_option_pw_site_options', 'pw_check_passphrase_and_lock_site_domain', 10, 2 );
 function pw_check_passphrase_and_lock_site_domain( $options, $old_options ) {
 
     if ( $options['passphrase'] == '4242' ) {
 
 	    $options['site_domain_locked'] = pw_lock_domain( $options['site_domain_locked'] );
+
+	    if ( ! empty( $options['prevent_google_bing_indexing'] ) ) {
+		    unset( $options['force_robots_off'] );
+	    }
 
 	    unset( $options['passphrase'] );
 

@@ -16,6 +16,10 @@ Displays site environment in the admin bar.  Activates and deactivates plugins a
 
 == Changelog ==
 
+= 2.0.1 =
+* Fixed precedence between generic search-engine blocking and Google/Bing-only indexing prevention.
+* Google/Bing-only mode now restores WordPress search visibility and takes precedence over the conflicting generic robots setting.
+
 = 2.0.0 =
 * Migrated plugin update distribution from Bitbucket to public GitHub.
 * Updated YahnisElsts/plugin-update-checker from 5.6 to 5.7.

@@ -3,7 +3,7 @@
  * Plugin Name: Which Environment
  * Description: Displays site environment in the admin bar.  Activates and deactivates plugins and features based on current environment.
  * Author: Tomas Hartl
- * Version: 2.0.0
+ * Version: 2.0.1
  * Author URI: https://parkdalewire.com/
 */
 
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const WHICH_ENVIRONMENT_PLUGIN_VERSION = '2.0.0';
+const WHICH_ENVIRONMENT_PLUGIN_VERSION = '2.0.1';
 
 
 add_action( 'plugins_loaded', 'which_environment_load_plugin_update_checker' );
@@ -253,6 +253,10 @@ function th_allow_robots() {
 // Force Disallow robots
 function th_disallow_robots() {
 
+	if ( th_is_setting_on( 'prevent_google_bing_indexing' ) ) {
+		return;
+	}
+
 	global $th_site_options;
 
 	if ( ! is_array( $th_site_options )
@@ -273,6 +277,10 @@ function th_prevent_search_engine_indexing() {
 
 	if ( ! th_is_setting_on( 'prevent_google_bing_indexing' ) ) {
 		return;
+	}
+
+	if ( ! get_option( 'blog_public' ) ) {
+		update_option( 'blog_public', '1' );
 	}
 
 	add_action( 'wp_head', 'th_output_search_engine_noindex_meta_tags', 1 );
