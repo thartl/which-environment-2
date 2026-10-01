@@ -16,6 +16,9 @@ Displays site environment in the admin bar.  Activates and deactivates plugins a
 
 == Changelog ==
 
+= 2.0.2 =
+* Fixed: Admin file loading on WordPress installations using a relocated content directory.
+
 = 2.0.1 =
 * Fixed precedence between generic search-engine blocking and Google/Bing-only indexing prevention.
 * Google/Bing-only mode now restores WordPress search visibility and takes precedence over the conflicting generic robots setting.
